@@ -4,8 +4,8 @@
 前后端分离通过ajax实现\
 单页面多应用也是通过ajax实现\
 图表通过百度Echarts实现\
-AdminLogin.html为管理员登录页面
-UserLogin.html为用户登录页面
+AdminLogin.html为管理员登录页面\
+UserLogin.html为用户登录页面\
 lucky.html是一个抽奖网页\
 db.properties存放数据库配置信息\
 mail.properties存放发送邮箱配置信息\
