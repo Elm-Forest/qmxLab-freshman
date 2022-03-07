@@ -1,0 +1,226 @@
+<div class="page-header" style="margin-top: -20px;margin-bottom: 5px">
+    <h1>用户列表<small>&nbsp查询与管理</small></h1>
+</div>
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+            <a href="#home" aria-controls="home" role="tab" data-toggle="tab">查询</a>
+        </li>
+        <li role="presentation">
+            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">添加</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <div class="panel panel-default">
+                <div class="panel-body text-center">
+                    <div class="form-inline">
+                        <label>每页展示
+                            <select class="selectpicker" id="pageSize">
+                                <option value="5">5</option>
+                                <option value="10" selected>10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                                <option value="1000000">所有</option>
+                            </select>
+                        </label>
+                        <div class="form-group">
+                            <label for="username">姓名</label>
+                            <input type="text" class="form-control" id="username"
+                                   placeholder="李xx">
+                        </div>
+                        <div class="form-group">
+                            <label for="grade">年级</label>
+                            <input type="text" class="form-control" id="grade"
+                                   placeholder="202x">
+                        </div>
+                        <label>组别
+                            <select class="selectpicker" id="target">
+                                <option value="" selected>所有用户</option>
+                                <option value="开发组">开发组</option>
+                                <option value="智能组">智能组</option>
+                                <option value="机械组">机械组</option>
+                                <option value="ACM">ACM集训队</option>
+                            </select>
+                        </label>
+                        <button class="btn btn-default" id="check">查询</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="alert alert-success alert-dismissible successMsg" role="alert" style="display: none">
+                            <button type="button" class="close" data-dismisssuccessMsg="alert" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <strong>Tips</strong> <span id="successMsg"></span>成功！
+                        </div>
+                        <div class="alert alert-danger alert-dismissible errorMsg" role="alert" style="display: none">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <strong>Warning!</strong> <span id="errorMsg">修改</span>失败，服务器消息：<span id="serverMsg"></span>
+                        </div>
+                        <table class="table table-hover table-striped table-bordered"></table>
+                        <div class="pull-right">
+                            <nav aria-label="...">
+                                <ul class="pager" id="currentNum" style>
+                                    <li>
+                                        <button @click="decreaseNum" id="behind" class="btn btn-group">下一页</button>
+                                    </li>
+                                    <li>{{currentNum}}</li>
+                                    <li>
+                                        <button @click="increaseNum" id="next" class="btn btn-group">下一页</button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="profile">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-offset-3 col-sm-6">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="nameAdd">Name</label>
+                                    <input type="text" class="form-control" id="nameAdd" placeholder="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="studentIDAdd">StudentID</label>
+                                    <input type="text" class="form-control" id="studentIDAdd"
+                                           placeholder="studentID">
+                                </div>
+                                <div class="form-group">
+                                    <label for="passwordAdd">Password</label>
+                                    <input type="password" class="form-control" id="passwordAdd" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="mailAdd">Email</label>
+                                    <input type="Email" class="form-control" id="mailAdd" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label>志愿
+                                        <select class="selectpicker" id="targetAdd">
+                                            <option value="开发组">开发组</option>
+                                            <option value="智能组" selected>智能组</option>
+                                            <option value="机械组">机械组</option>
+                                            <option value="ACM">ACM集训队</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>年级
+                                        <select class="selectpicker" id="gradeAdd">
+                                            <option value="2021">2021</option>
+                                            <option value="2020" selected>2020</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>学院
+                                        <select class="selectpicker" id="majorAdd">
+                                            <option value="计算机与信息学院" selected>计算机与信息学院</option>
+                                            <option value="电气与新能源学院">电气与新能源学院</option>
+                                            <option value="机械与动力学院">机械与动力学院</option>
+                                            <option value="水利与环境学院">水利与环境学院</option>
+                                            <option value="理学院">理学院</option>
+                                            <option value="医学院">医学院</option>
+                                            <option value="土木与建筑学院">土木与建筑学院</option>
+                                            <option value="经济与管理学院">经济与管理学院</option>
+                                            <option value="其他学院">其他学院</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phoneAdd">Phone</label>
+                                    <input type="text" class="form-control" id="phoneAdd" placeholder="Phone">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            onclick="addUser();" data-target="#tip">提交
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="editUser">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">用户修改</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" value="0" id="UserID">
+                <div class="form-group">
+                    <label for="nameModify">Name</label>
+                    <input type="text" class="form-control" id="nameModify" placeholder="name">
+                </div>
+                <div class="form-group">
+                    <label for="studentIDModify">StudentID</label>
+                    <input type="text" class="form-control" id="studentIDModify"
+                           placeholder="studentID">
+                </div>
+                <div class="form-group">
+                    <label for="mailModify">Email</label>
+                    <input type="Email" class="form-control" id="mailModify"
+                           placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="targetModify">Target</label>
+                    <input type="text" class="form-control" id="targetModify"
+                           placeholder="开发组">
+                </div>
+                <div class="form-group">
+                    <label for="gradeModify">Grade</label>
+                    <input type="text" class="form-control" id="gradeModify"
+                           placeholder="2021">
+                </div>
+                <div class="form-group">
+                    <label for="majorModify">Major</label>
+                    <input type="text" class="form-control" id="majorModify"
+                           placeholder="计算机与信息学院">
+                </div>
+                <div class="form-group">
+                    <label for="phoneModify">Phone</label>
+                    <input type="text" class="form-control" id="phoneModify"
+                           placeholder="Phone">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="userModify" data-dismiss="modal"
+                        onclick="userModify()">提交
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="tip">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">From Server@localhost:8080</h4>
+            </div>
+            <div class="modal-body">
+                <p class="tip">Null</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/UserList.js"></script>

@@ -1,0 +1,35 @@
+.charts {
+    font-family: Arial, serif;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: bold;
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    background-color: #f8f5f5;
+    height: 400px;
+    margin: 30px 30px 30px 60px;
+}
+
+.num {
+    font-size: 15px;
+    color: #4d4d4d;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+
+    background-color: #f1f3f2;
+    height: 120px;
+    line-height: 25px;
+    border: #efeeee solid 2px;
+    margin: 25px 50px 0;
+    text-align: center;
+    font-family: "Apple Color Emoji", sans-serif;
+}
+
+.num p {
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 30px;
+}

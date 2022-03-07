@@ -1,0 +1,89 @@
+<style>
+    .shadow-sm {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border: #eeeeee solid 2px;
+    }
+</style>
+<div style="height: 200px;"></div>
+<div class="card mb-3 shadow-sm col-md-6 col-md-offset-3">
+    <div class="card-body" id="userResult">
+        <ul style="height: 20px;"></ul>
+        <h2 class="card-title pricing-card-title"><small class="text-muted">您最终的成绩为</small>
+            &nbsp;{{scoreSet}}</h2>
+        <h2 class="card-title pricing-card-title"><small class="text-muted">最终结果为</small>
+            &nbsp;&nbsp;{{resultSet}}</h2>
+        <h2 class="card-title pricing-card-title"><small>{{welcomeYou}}</small>
+            &nbsp;{{targetSet}}</h2>
+        <ul style="height: 20px;"></ul>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        setUserResult();
+    })
+    var userResult = new Vue({
+        el: '#userResult',
+        data: {
+            scoreSet: '',
+            resultSet: '',
+            targetSet: '',
+            welcomeYou:''
+        },
+        methods: {
+            setScore: function (score) {
+                this.scoreSet = score;
+            },
+            setResult: function (result) {
+                this.resultSet = result;
+            },
+            setTarget: function (target) {
+                this.targetSet = target;
+            },
+            setWelcome: function (welcome) {
+                this.welcomeYou = welcome;
+            }
+        }
+    })
+
+    function setUserResult() {
+        $.ajax({
+            type: 'get',
+            url: "../../../user",
+            async: false,
+            data: {
+                "method": "getUserInfo"
+            },
+            dataType: "json",
+            success: function (data) {
+                userResult.setTarget(data.target);
+            },
+            error: function (error) {
+                console.log("getUserInfo error")
+                console.log(error)
+            }
+        })
+        $.ajax({
+            type: 'get',
+            url: "../../../user",
+            async: false,
+            data: {
+                "method": "getResult"
+            },
+            dataType: "json",
+            success: function (data) {
+                userResult.setResult(data.result);
+                if (data.result==='录用'){
+                    userResult.setWelcome("欢迎加入");
+                }else{
+                    userResult.setWelcome("很遗憾您没有被录用，欢迎再次报名 ");
+                }
+                userResult.setScore(data.score);
+            },
+            error: function (error) {
+                console.log("getResult error")
+                console.log(error)
+            }
+        })
+    }
+</script>

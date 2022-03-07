@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+    <link href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/UserLogin.css">
+    <script src="../js/jquery.mini.js"></script>
+    <script src="../js/myalert.js"></script>
+</head>
+<body>
+<div id="box">
+    <div class="title">
+        <span>Admin</span>
+    </div>
+    <div id="tip"></div>
+    <div class="usernameBox">
+        <label for="username">用户名</label>
+        <input type="text" name="username" id="username" placeholder="管理员账号 / AdminName" required>
+    </div>
+    <div class="passwordBox">
+        <label for="password">密码</label>
+        <input type="password" name="password" id="password" placeholder="密码 / password" required>
+
+        <label for="password" id="eye">
+            <img src="../img/closeeye.png" alt="闭眼">
+        </label>
+    </div>
+    <div class="register">
+        <span>用户登录？</span><a href="UserLogin.html">点击前往</a>
+    </div>
+    <div class="button">
+        <button type="submit" id="admin">GO</button>
+    </div>
+</div>
+</body>
+<script>
+    $("#admin").click(function () {
+        if (nameInput.val().length > 20 || pwdInput.val().length > 20) {
+            $("#tip").text("*输入格式错误,用户名和密码的长度不能超过20位");
+            return;
+        }
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "../../adminLogin",
+            dataType: "text",
+            data: {
+                "adminUserName": nameInput.val(),
+                "adminPWD": pwdInput.val()
+            },
+            success: function (data) {
+                if (data === "success") {
+                    $(window).attr('location', 'admin/admin.html');
+                } else {
+                    $("#tip").text("*" + data);
+                    alert(data);
+                }
+            },
+            error: function (ERROR) {
+                console.log("异步通信发生错误，请检查连接是否正常，错误code：" + ERROR.status);
+            }
+        })
+    })
+</script>
+<script src="../js/UserLogin.js"></script>
+</html>

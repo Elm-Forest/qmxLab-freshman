@@ -1,0 +1,123 @@
+body {
+    background-color: #defffa;
+}
+
+a {
+    text-decoration: none;
+}
+
+#box {
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border: 2px solid #f6e5e5;
+    margin: 0 auto;
+    text-align: center;
+    top: 150px;
+    height: 400px;
+    width: 500px;
+    opacity: 0.8;
+    background-color: #f8e2b8;
+}
+
+.usernameBox {
+    position: absolute;
+    width: 250px;
+    margin: auto 109px;
+    top: 130px;
+}
+
+.passwordBox {
+    position: absolute;
+    width: 250px;
+    margin: auto 117px;
+    top: 200px;
+}
+
+#box input {
+    height: 25px;
+    width: 200px;
+    border: none;
+    border-bottom: #000000;
+    border-bottom: 2px solid #b0a9a9;
+    outline: none;
+    background-color: #f8e2b8;
+    font-size: 12px;
+}
+
+.title {
+    width: 70px;
+    position: absolute;
+    margin: auto 216px;
+    top: 60px;
+    text-align: center;
+    font-family: "Bell MT", fantasy;
+    font-size: 30px;
+}
+
+#tip {
+    position: absolute;
+    margin: auto 110px;
+    top: 100px;
+    font-size: 10px;
+    color: #ef3b3b;
+    font-family: "Apple Color Emoji", sans-serif;
+}
+
+.button {
+    width: 130px;
+    color: #5cb85c;
+    position: absolute;
+    margin: auto 190px;
+    top: 250px;
+    text-align: center;
+    font-family: "Microsoft YaHei UI", ui-rounded;
+}
+
+.button button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 20px 20px;
+}
+
+.register, .forget {
+    width: 170px;
+    position: absolute;
+    margin: auto 90px;
+    top: 310px;
+    text-align: center;
+    font-family: "Microsoft YaHei UI", ui-serif;
+    font-size: 12px;
+}
+
+.forget {
+    margin: auto 260px;
+    top: 310px;
+}
+
+label {
+    position: relative;
+    top: 2.2px;
+    left: -6px;
+    font-size: 13px;
+    font-family: "Bell MT", ui-sans-serif;
+}
+
+.passwordBox label {
+    left: -6px;
+}
+
+#eye {
+    position: absolute;
+    left: 220px;
+}
+
+#eye img {
+    width: 24px;
+}

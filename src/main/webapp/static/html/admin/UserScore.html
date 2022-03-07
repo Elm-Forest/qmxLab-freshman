@@ -1,0 +1,172 @@
+<div class="page-header" style="margin-top: -20px;margin-bottom: 5px">
+    <h1>用户评价<small>&nbsp管理界面</small></h1>
+</div>
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <div class="panel panel-default">
+                <div class="panel-body text-center">
+                    <div class="form-inline">
+                        <label>每页展示
+                            <select class="selectpicker" id="pageSize">
+                                <option value="5">5</option>
+                                <option value="10" selected>10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                                <option value="1000000">所有</option>
+                            </select>
+                        </label>
+                        <div class="form-group">
+                            <label for="username">姓名</label>
+                            <input type="text" class="form-control" id="username"
+                                   placeholder="李xx">
+                        </div>
+                        <div class="form-group">
+                            <label for="grade">年级</label>
+                            <input type="text" class="form-control" id="grade"
+                                   placeholder="202x">
+                        </div>
+                        <label>组别
+                            <select class="selectpicker" id="target">
+                                <option value="" selected>所有用户</option>
+                                <option value="开发组">开发组</option>
+                                <option value="智能组">智能组</option>
+                                <option value="机械组">机械组</option>
+                                <option value="ACM">ACM集训队</option>
+                            </select>
+                        </label>
+                        <button class="btn btn-default" id="check">查询</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="alert alert-success alert-dismissible successMsg" role="alert" style="display: none">
+                            <button type="button" class="close" data-dismisssuccessMsg="alert" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <strong>Tips</strong> <span id="successMsg"></span>成功！
+                        </div>
+                        <div class="alert alert-danger alert-dismissible errorMsg" role="alert" style="display: none">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <strong>Warning!</strong> <span id="errorMsg">修改</span>失败，服务器消息：<span id="serverMsg"></span>
+                        </div>
+                        <table class="table table-hover table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>
+                                    <a href="#" class="btn btn-danger btn-sm">删除</a>
+                                    <a href="#" class="btn btn-info btn-sm" data-toggle="modal"
+                                       data-target="#editUser">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>
+                                    <a href="#" class="btn btn-danger btn-sm">删除</a>
+                                    <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editUser"
+                                       onclick="update(this)">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td class="id">Larry</td>
+                                <td id="name">the Bird</td>
+                                <td id="grades">@twitter</td>
+                                <td>
+                                    <a href="#" class="btn btn-danger btn-sm" onclick="getObj(this)">删除</a>
+                                    <a href="#" class="btn btn-info btn-sm" data-toggle="modal"
+                                       data-target="#editUser">修改</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="pull-right">
+                            <nav aria-label="...">
+                                <ul class="pager" id="currentNum" style>
+                                    <li>
+                                        <button @click="decreaseNum" id="behind" class="btn btn-group">下一页</button>
+                                    </li>
+                                    <li>{{currentNum}}</li>
+                                    <li>
+                                        <button @click="increaseNum" id="next" class="btn btn-group">下一页</button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--            <div class="alert alert-success alert-dismissible successMsg" role="alert" style="display: none">
+                <button type="button" class="close" data-dismisssuccessMsg="alert" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <strong>Tips</strong> <span id="successMsg"></span>成功！
+            </div>
+            <div class="alert alert-danger alert-dismissible errorMsg" role="alert" style="display: none">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <strong>Warning!</strong> <span id="errorMsg">修改</span>失败，服务器消息：<span id="serverMsg"></span>
+            </div>-->
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="editUser">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">修改分数</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" value="0" id="UserID">
+                <div class="form-group">
+                    <label for="score">score</label>
+                    <input type="text" class="form-control" id="score"
+                           placeholder="85">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-toggle="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="userModify" data-dismiss="modal"
+                        onclick="userModify()">提交
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="tip">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">From Server@localhost:8080</h4>
+            </div>
+            <div class="modal-body">
+                <p class="tip">Null</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<script src="../../js/UserScore.js"></script>

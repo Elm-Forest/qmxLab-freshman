@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap-select.min.css">
+    <script src="../../js/echarts.min.js"></script>
+    <script src="../../js/vue.js"></script>
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="../../js/getTime.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="admin.html">招新管理系统 <span class="badge"><small>启明星</small></span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right user">
+                <li><a href="javascript:$('#content').load('adminModify.html')">你好，{{users}}</a></li>
+                <li><a href="../../../admin/logout">退出 <span class="glyphicon glyphicon-log-out"></span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 text-center">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                               aria-expanded="true" aria-controls="collapseOne">
+                                数据 <span class="glyphicon glyphicon-stats"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body text-center">
+                            <ul class="panel-body">
+                                <li class="list-group-item"><a href="javascript:$('#content').load('UserCharts.html')">数据总览</a>
+                                </li>
+                                <li class="list-group-item"><a href="javascript:$('#content').load('majorCharts.html')">专业分布</a>
+                                </li>
+                                <li class="list-group-item"><a
+                                        href="javascript:$('#content').load('resultCharts.html')">成绩信息</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                用户 <span class="glyphicon glyphicon-user"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <ul class="panel-body">
+                                <li class="list-group-item"><a id="userList">用户列表</a></li>
+                                <li class="list-group-item"><a href="javascript:$('#content').load('UserScore.html')">评价设置</a>
+                                </li>
+                                <li class="list-group-item"><a href="javascript:$('#content').load('UserResult.html')">录用结果</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                管理员 <span class="glyphicon glyphicon-wrench"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                         aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <ul class="panel-body">
+                                <li class="list-group-item"><a
+                                        href="javascript:$('#content').load('adminList.html')">管理员列表</a></li>
+                                <li class="list-group-item"><a href="javascript:$('#content').load('adminAdd.html')">添加管理员</a>
+                                </li>
+                                <li class="list-group-item"><a
+                                        href="javascript:$('#content').load('adminModify.html')">修改信息</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingFour">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                退出 <span class="glyphicon glyphicon-off"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+                         aria-labelledby="headingFour">
+                        <div class="panel-body">
+                            <ul class="panel-body">
+                                <li class="list-group-item"><a href="../../../admin/logout">退出系统</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingFive">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                关于 <span class="glyphicon glyphicon-tree-conifer"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel"
+                         aria-labelledby="headingFive">
+                        <div class="panel-body">
+                            <ul class="panel-body">
+                                <li class="list-group-item"><a href="javascript:$('#content').load('../Loading.html')">关于开发者</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10" id="content">
+            <div class="jumbotron user time">
+                <h1>{{hello}}{{users}}</h1>
+                <p>现在是 {{time}}</p>
+                <p><a class="btn btn-primary btn-lg" href="javascript:$('#content').load('UserCharts.html')"
+                      role="button">查看数据总览</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../js/admin.js"></script>
+</html>

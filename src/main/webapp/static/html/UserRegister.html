@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Login</title>
+    <link href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/UserRegister.css">
+    <script src="../js/jquery.mini.js"></script>
+    <script src="../js/myalert.js"></script>
+</head>
+<body>
+<div id="box">
+    <div class="title">
+        <span>启明星工作室&ACM集训队2022春招报名表</span>
+    </div>
+    <div class="tip" id="nameTip">*</div>
+    <div class="usernameBox">
+        <label for="name">姓名</label>
+        <input type="text" name="name" id="name" placeholder="姓名 / name" required>
+    </div>
+    <div class="tip" id="studentIDTip">*</div>
+    <div id="studentIDBox">
+        <label for="studentID">学号</label>
+        <input type="text" name="studentID" id="studentID" placeholder="学号 / studentID" required>
+    </div>
+    <div id="gradeBox">
+        <label for="grade">年级</label>
+        <select id="grade" name="grade">
+            <option value="2020">2020级</option>
+            <option value="2021" selected>2021级</option>
+        </select>
+    </div>
+    <div id="targetBox">
+        <label for="target">志愿</label>
+        <select id="target" name="target">
+            <option value="开发组" selected>启明星开发组</option>
+            <option value="智能组">启明星智能组</option>
+            <option value="机械组">启明星机械组</option>
+            <option value="ACM">ACM集训队</option>
+        </select>
+    </div>
+    <div id="majorBox">
+        <label for="major">学院</label>
+        <select id="major" name="major">
+            <option value="计算机与信息学院" selected>计算机与信息学院</option>
+            <option value="电气与新能源学院">电气与新能源学院</option>
+            <option value="机械与动力学院">机械与动力学院</option>
+            <option value="水利与环境学院">水利与环境学院</option>
+            <option value="理学院">理学院</option>
+            <option value="医学院">医学院</option>
+            <option value="土木与建筑学院">土木与建筑学院</option>
+            <option value="经济与管理学院">经济与管理学院</option>
+            <option value="其他学院">其他学院</option>
+        </select>
+    </div>
+    <div class="tip" id="passwordTip">*</div>
+    <div class="passwordBox">
+        <label for="password">密码</label>
+        <input type="password" name="password" id="password" placeholder="6到20位 / 用于修改信息和查询录取" required>
+        <label for="password" id="eye">
+            <img src="../img/closeeye.png" alt="闭眼">
+        </label>
+    </div>
+    <div class="tip" id="mailTip">*</div>
+    <div id="mailBox">
+        <label for="mail">邮箱</label>
+        <input type="email" class="input-text" id="mail" name="mail" placeholder="xxx@xx.xx / 用于接收信息和找回密码" required/>
+    </div>
+    <div id="mailCheck">
+        <label for="mailCode">&nbsp&nbsp验证码</label>
+        <input type="text" class="input-text" id="mailCode" name="mailCode" placeholder="邮件验证码"/>
+    </div>
+    <div class="check">
+        <button>发送</button>
+    </div>
+    <div class="tip" id="phoneTip"></div>
+    <div id="phoneBox">
+        <label for="phone">&nbsp&nbsp电话</label>
+        <input type="text" class="input-text" id="phone" name="phone" placeholder="xxxxxxxxxxx(可选)"/>
+    </div>
+    <div class="button">
+        <button type="submit">提交</button>
+    </div>
+</div>
+</body>
+<script src="../js/UserRegister.js"></script>
+</html>

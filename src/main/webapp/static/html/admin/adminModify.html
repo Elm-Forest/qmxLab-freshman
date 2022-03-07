@@ -1,0 +1,103 @@
+<div class="page-header" style="margin-top: -20px;margin-bottom: 5px">
+    <h1>个人信息<small>&nbsp查询与修改</small></h1>
+</div>
+<div>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <div class="panel panel-default col-sm-10 col-sm-offset-1">
+                <div></div>
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <div class="alert alert-success alert-dismissible successMsg" role="alert"
+                             style="display: none">
+                            <button type="button" class="close" data-dismisssuccessMsg="alert" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <strong>Tips</strong> <span id="successMsg"></span>成功！
+                        </div>
+                        <div class="alert alert-danger alert-dismissible errorMsg" role="alert" style="display: none">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <strong>Warning!</strong> <span id="errorMsg">修改</span>失败，服务器消息：<span id="serverMsg"></span>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="nameAdd">您的账号</label>
+                                <input type="text" class="form-control" id="nameAdd" placeholder="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordAdd">您的密码</label>
+                                <input type="password" class="form-control" id="passwordAdd" placeholder="Password">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        onclick="modifyAdmin();" data-target="#tip">提交
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="tip">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">From Server@localhost:8080</h4>
+            </div>
+            <div class="modal-body">
+                <p class="tip">Null</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        setAdmin();
+    })
+
+    function setAdmin() {
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "../../../admin",
+            data: {
+                "method": "getAdmin",
+            },
+            success: function (data) {
+                $("#nameAdd").val(data.adminUserName);
+                $("#passwordAdd").val(data.adminPWD);
+            },
+            error: function (ERROR) {
+                console.log("ajax/error:发生错误：" + ERROR.status);
+            }
+        });
+    }
+
+    function modifyAdmin() {
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "../../../admin",
+            dataType: "text",
+            data: {
+                "adminUserName": $("#nameAdd").val(),
+                "adminPWD": $("#passwordAdd").val(),
+                "method": "adminModifySelf",
+            },
+            success: function (data) {
+                $(".tip").text(data);
+            },
+            error: function (ERROR) {
+                console.log("ajax/error:发生错误：" + ERROR.status);
+            }
+        });
+    }
+</script>

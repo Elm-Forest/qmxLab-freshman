@@ -1,0 +1,78 @@
+<div>
+    <div class="col-md-6 order-md-2 mb-4 col-md-offset-3">
+        <div class="page-header" style="margin-top: 40px;margin-bottom: -8px">
+            <h1>个人信息卡片<small>&nbspPersonal Information card</small></h1>
+        </div>
+        <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                    <h6 class="my-0">姓名</h6>
+                </div>
+                <span id="my-name"></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                    <h6 class="my-0">学号</h6>
+                </div>
+                <span id="my-studentID"></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                    <h6 class="my-0">志愿</h6>
+                </div>
+                <span id="my-target"></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div class="my-0">
+                    <h6 class="my-0">学院</h6>
+                </div>
+                <span id="my-major"></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <div class="my-0">
+                    <h6 class="my-0">年级</h6>
+                </div>
+                <span id="my-grade"></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <div class="my-0">
+                    <h6 class="my-0">邮箱</h6>
+                </div>
+                <span id="my-mail"></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <div class="my-0">
+                    <h6 class="my-0">电话</h6>
+                </div>
+                <span id="my-phone"></span>
+            </li>
+        </ul>
+        <a type="button" class="btn btn-primary pull-right" id="userModify" data-dismiss="modal"
+           href="javascript:$('#content').load('UserModify.html')">修改信息
+        </a>
+    </div>
+</div>
+<script>
+    $(function () {
+        $.ajax({
+            type: "get",
+            url: "../../../user",
+            dataType: "json",
+            data: {
+                "method": "getUserInfo",
+            },
+            success: function (data) {
+                $("#my-name").text(data.name);
+                $("#my-studentID").text(data.studentID);
+                $("#my-grade").text(data.grade);
+                $("#my-major").text(data.major);
+                $("#my-target").text(data.target);
+                $("#my-mail").text(data.mail);
+                $("#my-phone").text(data.phone);
+            },
+            error: function (ERROR) {
+                console.log("ajax/error:发生错误：" + ERROR.status);
+            }
+        });
+    })
+</script>

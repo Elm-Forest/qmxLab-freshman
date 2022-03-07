@@ -1,0 +1,46 @@
+<div class="col-lg-offset-2 col-lg-8">
+    <div class="page-header">
+        <h2>用户密码修改 <small>User Password Modification</small></h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="oldPassword">旧密码&nbsp;</label><small id="Tip1"></small>
+            <input type="password" class="form-control" id="oldPassword" placeholder="oldPassword"
+                   style="display: inline-block">
+        </div>
+        <div class="form-group">
+            <label for="newPassword">新密码</label><small id="Tip2"></small>
+            <input type="password" class="form-control" id="newPassword"
+                   placeholder="newPassword">
+        </div>
+        <div class="form-group">
+            <label for="newPasswordTwo">重新输入新密码</label><small id="Tip3"></small>
+            <input type="password" class="form-control" id="newPasswordTwo" placeholder="newPassword">
+        </div>
+        <div class="form-group" style="height: 20px;">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-toggle="modal"
+                    onclick="UserPwdModify();" data-target="#tip">提交
+            </button>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="tip">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">From Server@localhost:8080</h4>
+            </div>
+            <div class="modal-body">
+                <p class="tip">Null</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../js/UserPwdModify.js"></script>

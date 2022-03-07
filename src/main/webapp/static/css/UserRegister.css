@@ -1,0 +1,195 @@
+body {
+    background-color: #defffa;
+}
+
+a {
+    text-decoration: none;
+}
+
+#box {
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border: 2px solid #f6e5e5;
+    margin: 0 auto;
+    text-align: center;
+    top: 0;
+    height: 730PX;
+    width: 600px;
+    opacity: 0.8;
+    background-color: #f8e2b8;
+}
+
+.usernameBox,
+#studentIDBox,
+.passwordBox,
+#mailBox,
+#phoneBox,
+#mailCheck {
+    position: absolute;
+    width: 300px;
+    margin: auto 150px;
+    top: 130px;
+}
+
+#studentIDBox {
+    top: 180px;
+}
+
+#gradeBox, #targetBox, #majorBox {
+    position: absolute;
+    width: 300px;
+    margin: auto 99px;
+    top: 230px;
+}
+
+#targetBox {
+    top: 280px;
+}
+
+#majorBox {
+    top: 330px;
+}
+
+.passwordBox {
+    top: 380px;
+}
+
+#mailBox {
+    top: 430px;
+}
+
+#mailCheck {
+    margin: auto 90px;
+    width: 325px;
+    top: 480px;
+}
+
+#phoneBox {
+    top: 530px;
+}
+
+#major, #target, #grade {
+    background-color: #f8e2b8;
+    width: 150px;
+    border: none;
+    border-bottom: 2px solid #b0a9a9;
+    color: rgb(133, 130, 130);
+    text-align: center;
+    outline: none;
+}
+
+#box input {
+    height: 25px;
+    width: 250px;
+    border: none;
+    border-bottom: 2px solid #b0a9a9;
+    outline: none;
+    background-color: #f8e2b8;
+    font-size: 12px;
+}
+
+.title {
+    width: 400px;
+    position: absolute;
+    margin: auto 106px;
+    top: 60px;
+    text-align: center;
+    font-family: "Bell MT", fantasy;
+    font-size: 20px;
+}
+
+.tip {
+    position: absolute;
+    margin: auto auto;
+    left: 450px;
+    top: 135px;
+    font-size: 10px;
+    color: #ef3b3b;
+    font-family: "Apple Color Emoji", sans-serif;
+}
+
+#studentIDTip {
+    top: 185px;
+}
+
+#passwordTip {
+    top: 385px;
+}
+
+#mailTip {
+    top: 435px;
+}
+
+#phoneTip {
+    top: 535px;
+}
+
+#mailCheck #mailCode {
+    width: 170px;
+}
+
+.button {
+    width: 150px;
+    color: #5cb85c;
+    position: absolute;
+    margin: auto 240px;
+    top: 600px;
+    text-align: center;
+    font-family: "Microsoft YaHei UI", ui-rounded;
+}
+
+.button button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 20px 20px;
+}
+
+.check {
+    width: 150px;
+    color: #5cb85c;
+    position: absolute;
+    margin: auto 335px;
+    top: 476px;
+    text-align: center;
+    font-family: "Microsoft YaHei UI", ui-rounded;
+}
+
+.check button {
+    background-color: #5dafea; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    border-radius: 5px 5px;
+}
+
+label {
+    position: relative;
+    top: 2.2px;
+    left: -6px;
+    font-size: 13px;
+    font-family: "Bell MT", ui-sans-serif;
+}
+
+.passwordBox label {
+    left: -6px;
+}
+
+#eye {
+    position: absolute;
+    left: 270px;
+}
+
+#eye img {
+    width: 24px;
+}

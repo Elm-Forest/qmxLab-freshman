@@ -1,0 +1,146 @@
+<div class="col-lg-offset-2 col-lg-8">
+    <div class="page-header">
+        <h2>用户资料修改 <small>User Profile Modification</small></h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="nameModify">Name</label>
+            <input type="text" class="form-control" id="nameModify" placeholder="name">
+        </div>
+        <div class="form-group">
+            <label for="studentIDModify">StudentID</label>
+            <input type="text" class="form-control" id="studentIDModify"
+                   placeholder="studentID">
+        </div>
+        <div class="form-group">
+            <label for="mailModify">Email</label>
+            <input type="Email" class="form-control" id="mailModify" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label>志愿
+                <select class="selectpicker" id="targetModify">
+                    <option value="开发组">开发组</option>
+                    <option value="智能组">智能组</option>
+                    <option value="机械组">机械组</option>
+                    <option value="ACM">ACM集训队</option>
+                </select>
+            </label>
+        </div>
+        <div class="form-group">
+            <label>年级
+                <select class="selectpicker" id="gradeModify">
+                    <option value="2021">2021</option>
+                    <option value="2020" selected>2020</option>
+                </select>
+            </label>
+        </div>
+        <div class="form-group">
+            <label>学院
+                <select class="selectpicker" id="majorModify">
+                    <option value="计算机与信息学院" selected>计算机与信息学院</option>
+                    <option value="电气与新能源学院">电气与新能源学院</option>
+                    <option value="机械与动力学院">机械与动力学院</option>
+                    <option value="水利与环境学院">水利与环境学院</option>
+                    <option value="理学院">理学院</option>
+                    <option value="医学院">医学院</option>
+                    <option value="土木与建筑学院">土木与建筑学院</option>
+                    <option value="经济与管理学院">经济与管理学院</option>
+                    <option value="其他学院">其他学院</option>
+                </select>
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="phoneModify">Phone</label>
+            <input type="text" class="form-control" id="phoneModify" placeholder="Phone">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-toggle="modal"
+                    onclick="UserModify();" data-target="#tip">提交
+            </button>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="tip">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">From Server@localhost:8080</h4>
+            </div>
+            <div class="modal-body">
+                <p class="tip">Null</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        setUser();
+        $('.selectpicker').selectpicker('refresh');
+        $('.selectpicker').selectpicker('render');
+    })
+
+    function setUser() {
+        $.ajax({
+            type: "get",
+            url: "../../../user",
+            dataType: "json",
+            data: {
+                "method": "getUserInfo",
+            },
+            success: function (data) {
+
+                $("#UserID").val(data.ID);
+                $("#nameModify").val(data.name);
+                $("#studentIDModify").val(data.studentID);
+                $("#gradeModify").val(data.grade);
+                $("#majorModify").val(data.major);
+                $("#targetModify").val(data.target);
+                $("#mailModify").val(data.mail);
+                $("#phoneModify").val(data.phone);
+                $('.selectpicker').selectpicker('refresh');
+                $('.selectpicker').selectpicker('render');
+            },
+            error: function (ERROR) {
+                console.log("ajax/error:发生错误：" + ERROR.status);
+            }
+        });
+    }
+
+    function UserModify() {
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "../../../user",
+            dataType: "text",
+            data: {
+                "name": $("#nameModify").val(),
+                "studentID": $("#studentIDModify").val(),
+                "grade": $("#gradeModify").val(),
+                "target": $("#targetModify").val(),
+                "major": $("#majorModify").val(),
+                "mail": $("#mailModify").val(),
+                "phone": $("#phoneModify").val(),
+                "method": "userModifySelf",
+            },
+            success: function (data) {
+                $('.selectpicker').selectpicker('refresh');
+                $('.selectpicker').selectpicker('render');
+                console.log(data);
+                if (data==='success'){
+                    $(".tip").text("修改成功！");
+                }else{
+                    $(".tip").text(data);
+                }
+            },
+            error: function (ERROR) {
+                $(".tip").text(ERROR,"详情见控制台");
+                console.log("ajax/error:发生错误：" + ERROR.status);
+            }
+        });
+    }
+</script>

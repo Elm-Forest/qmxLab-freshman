@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Login</title>
+    <link href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/UserLogin.css">
+    <script src="../js/jquery.mini.js"></script>
+    <script src="../js/myalert.js"></script>
+</head>
+<body>
+<div id="box">
+    <div class="title">
+        <span>Login</span>
+    </div>
+    <div id="tip"></div>
+    <div class="usernameBox">
+        <label for="username">用户名</label>
+        <input type="text" name="username" id="username" placeholder="学号 / studentID" required>
+    </div>
+    <div class="passwordBox">
+        <label for="password">密码</label>
+        <input type="password" name="password" id="password" placeholder="密码 / password" required>
+
+        <label for="password" id="eye">
+            <img src="../img/closeeye.png" alt="闭眼">
+        </label>
+    </div>
+    <div class="button" id="user">
+        <button type="submit">GO</button>
+    </div>
+    <div class="register">
+        <span>没有账号？</span><a href="UserRegister.html">点击创建</a>
+    </div>
+    <div class="forget">
+        <a href="UserForget.html">找回密码</a>
+    </div>
+</div>
+</body>
+<script src="../js/UserLogin.js"></script>
+</html>

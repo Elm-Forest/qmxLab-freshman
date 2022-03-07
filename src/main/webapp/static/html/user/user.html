@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户</title>
+    <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../../css/pure-min.css">
+    <link rel="stylesheet" href="../../css/styles.73a7cab9.css">
+    <script src="../../js/echarts.min.js"></script>
+    <script src="../../js/vue.js"></script>
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../bootstrap/js/bootstrap-select.min.js"></script>
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4">
+            <div>
+                <div id="menu">
+                    <div class="pure-menu"><a class="pure-menu-heading" href="user.html">启明星</a>
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item"><a class="pure-menu-link"
+                                                          href="javascript:$('#content').load('UserInfo.html')">报名信息</a>
+                            </li>
+                            <li class="pure-menu-item"><a class="pure-menu-link"
+                                                          href="javascript:$('#content').load('UserModify.html')">资料修改</a>
+                            </li>
+                            <li class="pure-menu-item"><a class="pure-menu-link"
+                                                          href="javascript:$('#content').load('UserPwdModify.html')">修改密码</a>
+                            </li>
+                            <li class="pure-menu-item"><a class="pure-menu-link"
+                                                          href="javascript:$('#content').load('UserResult.html')">成绩查询</a>
+                            </li>
+                            <li class="pure-menu-item menu-item-divided"><a class="pure-menu-link"
+                                                                            href="javascript:$('#content').load('../Loading.html')">关于我们</a>
+                            </li>
+                            <li class="pure-menu-item"><a class="pure-menu-link" href="javascript:$('#content').load('../Loading.html')">关于开发者</a></li>
+                            <li class="pure-menu-item menu-item-divided"><a class="pure-menu-link"
+                                                                            href="../../../user/logout">退出</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+
+        </div>
+        <div class="col-sm-8 test col-sm-offset-3" id="content">
+            <div class="jumbotron" id="welcome">
+                <h1>欢迎报名{{target}}，{{username}}</h1>
+                <p>您是第{{n}}位报名春招的同学,总计有{{m}}位同学参加了春招,其中{{seemNum}}人和你一样选择了{{target}}</p>
+                <p><a class="btn btn-primary btn-lg" href="javascript:$('#content').load('UserInfo.html')" role="button" style="color: #ffffff">报名信息</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    const welcome = new Vue({
+        el: '#welcome',
+        data: {
+            target: '开发组',
+            username: '张三儿',
+            n: -1,
+            m: -1,
+            seemNum: 0
+        },
+        methods: {
+            setTarget: function (target) {
+                this.target = target;
+            },
+            setUserName: function (username) {
+                this.username = username;
+            },
+            setNo: function (ID) {
+                this.n = ID;
+            },
+            setTotal: function (totalNum) {
+                this.m = totalNum;
+            },
+            setSeemNum: function (seemNum) {
+                this.seemNum = seemNum;
+            }
+        }
+    })
+
+    function setUser() {
+        $.ajax({
+            type: "get",
+            url: "../../../user",
+            async: false,
+            data: {
+                "method": "getUserInfo"
+            },
+            success: function (data) {
+                welcome.setTarget(data.target);
+                welcome.setNo(data.ID);
+                welcome.setUserName(data.name);
+            }
+        })
+    }
+
+    function setTotal() {
+        $.ajax({
+            type: "get",
+            url: "../../../user",
+            async: false,
+            data: {
+                "name": '',
+                'grade': '',
+                'target': '',
+                "method": "getUserCount"
+            },
+            success: function (data) {
+                welcome.setTotal(data);
+            }
+        })
+    }
+
+    function setSeemNum() {
+        $.ajax({
+            type: "get",
+            url: "../../../user",
+            async: false,
+            data: {
+                "name": '',
+                'grade': '',
+                'target': welcome.target,
+                "method": "getUserCount"
+            },
+            success: function (data) {
+                welcome.setSeemNum(data);
+            }
+        })
+    }
+
+    $(function () {
+        setUser();
+        setTotal();
+        setSeemNum();
+    })
+</script>
+</html>
