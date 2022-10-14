@@ -1,4 +1,4 @@
-# JavaWeb工作室招新管理系统
+# 启明星实验室招新管理系统
 此项目是本人在大二寒假初学javaweb时的练手项目，项目大部分是由偏底层的技术实现
 - 后端：servlet+jdbc实现，MVC设计模式
 - 前端：原生的html5+css3+js，jQuery+bootstrap，vue2
